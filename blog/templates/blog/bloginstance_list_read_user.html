@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>My Read Blog</h1>
+
+    {% if bloginstance_list %}
+    <ul>
+
+      {% for bloginst in bloginstance_list %} 
+        <a href="{% url 'blog-detail' bloginst.book.pk %}">{{bloginst.book.title}}</a>         
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no favorite blogs!</p>
+    {% endif %}       
+{% endblock %}

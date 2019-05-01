@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Blogger: {{ blogger }} </h1>
+<p>Birth: {{blogger.date_of_birth}} - {% if blogger.date_of_death %}{{blogger.date_of_death}}{% endif %}</p>
+<dd>Biography: {{blogger.biography}}</dd>
+
+<div style="margin-left:20px;margin-top:20px">
+<h4>Posts</h4>
+
+<dl>
+{% for blog in blogger.blog_set.all %}
+  <dt><a href="{% url 'blog-detail' blog.pk %}">{{blog.title}}</a>  - {{blog.postdate}}</dt>
+  
+{% endfor %}
+</dl>
+
+</div>
+{% endblock %}

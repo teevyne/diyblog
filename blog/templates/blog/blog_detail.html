@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<h1>Article Title: {{ blog.title }}</h1>
+
+<p><b>Blogger:</b> {{ blog.blogger }}</p>
+<p><b>Date Posted:</b> {{ blog.postdate }} </p>
+<p><b>Language:</b> {% for language in blog.language.all %} {{ language }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<p><b>Theme:</b> {% for theme in blog.theme.all %} {{ theme }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<p><b>Article:</b> {{ blog.description }}</p>
+<div style="margin-top:20px">
+<b>Comments:</b> 
+
+{% endblock %}

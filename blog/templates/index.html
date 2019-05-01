@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Blogging Planet</title>{% endblock %}
+{% block content %}
+  <h1>Bloggers' Arcade</h1>
+  <p>Welcome to my blog, an open-ended pade that allows you <em><b>hear and be heard </b></em>!</p>
+  <h2>Relevant Content</h2>
+  <p>This blog has the following record counts:</p>
+  <ul>
+    <li><strong>Blog Posts:</strong> {{ num_blogs }} </li>
+    <li><strong>Blog Authors:</strong> {{ num_bloggers }}</li>
+    
+  </ul>
+{% endblock %}
