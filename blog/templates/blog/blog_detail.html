@@ -7,8 +7,19 @@
 <p><b>Date Posted:</b> {{ blog.postdate }} </p>
 <p><b>Language:</b> {% for language in blog.language.all %} {{ language }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
 <p><b>Theme:</b> {% for theme in blog.theme.all %} {{ theme }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-<p><b>Article:</b> {{ blog.description }}</p>
+<p><b>Article:</b> {{ blog.content }}</p>
 <div style="margin-top:20px">
-<b>Comments:</b> 
+<b>Leave a Comment:</b> 
+
+<h7><a href="{% url 'add_comment' 1 %}?next={{request.path}}">Click here</a> to leave a comment!</h7>
+
+<p>Total number of comments: {{ blog.comments.count }}</p>
+{% for comment in blog.comments.all %}
+
+<p>{{ comment.user}} on {{ comment.posted}}</p>
+<p>{{ comment.body}}</p>
+{% empty%}
+<p>There are no comments</p>
+{% endfor %}
 
 {% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
@@ -35,6 +35,16 @@ def index(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+
+from blog.models import Comment
+
+class CommentCreate(CreateView):
+    model = Comment
+    fields = ('user', 'email', 'body')
+    success_url = reverse_lazy('blogs')
 
 class ReaderBlogListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view listing books on loan to current user."""
